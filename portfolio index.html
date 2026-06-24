@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vansh Gondi · Cloud Engineer & DevOps</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#060c18;--bg2:#0a1628;--bg3:#0f1e35;
+  --accent:#1a6fdb;--accent2:#4da3ff;--accent3:#00d4ff;
+  --text:#e8f0fe;--muted:#7090b8;--border:rgba(26,111,219,0.22);
+  --card:rgba(10,22,40,0.85);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(26,111,219,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,111,219,0.04) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(6,12,24,0.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-size:1.2rem;font-weight:700;color:var(--accent2);letter-spacing:-0.5px;font-family:monospace;}
+.logo span{color:var(--accent3);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;letter-spacing:0.3px;}
+.nav-links a:hover{color:var(--accent2);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:7rem 2.5rem 4rem;
+  max-width:960px;margin:0 auto;position:relative;z-index:1;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(26,111,219,0.1);border:1px solid rgba(26,111,219,0.3);
+  color:var(--accent2);padding:6px 16px;border-radius:100px;
+  font-size:0.78rem;font-weight:600;margin-bottom:2rem;width:fit-content;letter-spacing:0.5px;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4)}50%{opacity:0.5;box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+.hero h1{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:0.3rem;}
+.hero h1 .greeting{color:var(--muted);font-weight:400;font-size:0.45em;letter-spacing:0;display:block;margin-bottom:0.3rem;}
+.hero-role{
+  font-size:1.4rem;font-weight:600;margin:0.6rem 0 1.5rem;
+  background:linear-gradient(90deg,var(--accent2),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:2.5rem;}
+.hero-desc strong{color:var(--accent2);}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:#fff;
+  padding:0.75rem 1.75rem;border-radius:10px;
+  font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;
+}
+.btn-p:hover{background:#1560c7;transform:translateY(-2px);}
+.btn-g{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--text);
+  padding:0.75rem 1.75rem;border-radius:10px;
+  font-size:0.9rem;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;text-decoration:none;
+}
+.btn-g:hover{border-color:var(--accent2);background:var(--bg3);}
+.stats-row{display:flex;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap;}
+.stat{border-left:2px solid var(--accent);padding-left:1rem;}
+.stat-val{font-size:1.6rem;font-weight:800;color:var(--accent2);}
+.stat-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.5px;}
+
+/* SECTIONS */
+section{padding:5rem 2.5rem;max-width:960px;margin:0 auto;position:relative;z-index:1;}
+.sec-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--accent3);margin-bottom:0.5rem;}
+.sec-title{font-size:2rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:0.5rem;}
+.sec-title span{color:var(--accent2);}
+.sec-sub{color:var(--muted);font-size:0.9rem;margin-bottom:2.5rem;}
+hr.div{border:none;border-top:1px solid var(--border);max-width:960px;margin:0 auto;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:start;}
+.about-text{color:var(--muted);line-height:1.9;font-size:0.95rem;}
+.about-text p{margin-bottom:1rem;}
+.about-text strong{color:var(--text);}
+.info-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:1.25rem 1.5rem;
+  display:flex;align-items:center;gap:1rem;margin-bottom:1rem;
+  transition:border-color 0.2s;
+}
+.info-card:hover{border-color:rgba(77,163,255,0.4);}
+.info-icon{
+  width:42px;height:42px;border-radius:10px;flex-shrink:0;
+  background:rgba(26,111,219,0.15);display:flex;align-items:center;justify-content:center;
+  color:var(--accent2);font-size:1.2rem;
+}
+.info-val{font-size:1rem;font-weight:700;color:var(--text);}
+.info-label{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;}
+.skill-cat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.2s;}
+.skill-cat:hover{border-color:rgba(77,163,255,0.35);}
+.skill-cat-hd{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--accent3);margin-bottom:1rem;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.skill-tag{
+  background:rgba(26,111,219,0.1);border:1px solid rgba(26,111,219,0.25);
+  color:var(--accent2);padding:4px 12px;border-radius:6px;
+  font-size:0.8rem;font-weight:500;
+}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:1.75rem;
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.proj-card:hover{border-color:rgba(77,163,255,0.5);transform:translateY(-4px);}
+.proj-card.featured{border-color:rgba(26,111,219,0.4);}
+.feat-badge{
+  position:absolute;top:1.25rem;right:1.25rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 10px;border-radius:5px;
+  background:rgba(26,111,219,0.2);color:var(--accent2);border:1px solid rgba(26,111,219,0.3);
+}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;}
+.proj-icon{
+  width:50px;height:50px;border-radius:12px;
+  background:rgba(26,111,219,0.12);border:1px solid rgba(26,111,219,0.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent2);font-size:1.4rem;
+}
+.proj-links{display:flex;gap:8px;}
+.proj-link{
+  color:var(--muted);background:var(--bg3);border:1px solid var(--border);
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  transition:color 0.2s;text-decoration:none;font-size:0.95rem;
+}
+.proj-link:hover{color:var(--accent2);}
+.proj-title{font-size:1.05rem;font-weight:700;margin-bottom:0.5rem;}
+.proj-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;margin-bottom:1.1rem;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
+.proj-tag{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.3px;
+  padding:3px 10px;border-radius:5px;
+  background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.18);color:var(--accent3);
+}
+
+/* CONTACT */
+.contact-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:3rem 2.5rem;text-align:center;
+}
+.contact-title{font-size:1.9rem;font-weight:800;margin-bottom:0.75rem;letter-spacing:-0.5px;}
+.contact-sub{color:var(--muted);margin-bottom:2rem;font-size:0.95rem;}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;}
+.c-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:0.7rem 1.5rem;border-radius:10px;
+  font-size:0.88rem;font-weight:600;text-decoration:none;
+  border:1px solid var(--border);color:var(--text);
+  background:var(--bg3);transition:all 0.2s;
+}
+.c-link:hover{border-color:var(--accent2);color:var(--accent2);}
+.c-link.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+.c-link.primary:hover{background:#1560c7;}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:2rem;color:var(--muted);
+  font-size:0.78rem;border-top:1px solid var(--border);
+  position:relative;z-index:1;
+}
+footer span{color:var(--accent2);}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(24px);transition:all 0.65s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr;}
+  nav{padding:1rem 1.2rem;}
+  .nav-links{gap:1.2rem;}
+  .hero{padding:7rem 1.2rem 3rem;}
+  section{padding:3.5rem 1.2rem;}
+  .stats-row{gap:1.5rem;}
+  .contact-box{padding:2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">&lt;<span>vansh</span>.cloud /&gt;</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <span class="live-dot"></span>
+    Cloud & DevOps Specialist · Open to Internships
+  </div>
+  <h1>
+    <span class="greeting">Hello, I'm</span>
+    Vansh Gondi
+  </h1>
+  <div class="hero-role">Cloud Engineer · DevOps Enthusiast</div>
+  <p class="hero-desc">
+    BTech CSE student at <strong>MM University, Mullana</strong> specializing in
+    <strong>Cloud Infrastructure</strong> and <strong>DevOps practices</strong>.
+    I design, deploy, and automate scalable systems on AWS.
+  </p>
+  <div class="hero-btns">
+    <a class="btn-p" href="#projects">
+      <i class="ti ti-cloud" aria-hidden="true"></i> View Projects
+    </a>
+    <a class="btn-g" href="#contact">
+      <i class="ti ti-mail" aria-hidden="true"></i> Get In Touch
+    </a>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val">4+</div><div class="stat-label">Cloud Projects</div></div>
+    <div class="stat"><div class="stat-val">AWS</div><div class="stat-label">Primary Platform</div></div>
+    <div class="stat"><div class="stat-val">5th</div><div class="stat-label">Semester · BTech CSE</div></div>
+    <div class="stat"><div class="stat-val">CI/CD</div><div class="stat-label">Pipeline Expert</div></div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+  <div class="sec-label">01 · About Me</div>
+  <h2 class="sec-title">Building in the <span>Cloud</span></h2>
+  <p class="sec-sub">Who I am and what drives me</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm <strong>Vansh Gondi</strong>, a BTech CSE student at <strong>Maharishi Markandeshwar Deemed to be University, Mullana</strong> with a specialization in Cloud Computing.</p>
+      <p>My passion lies in designing <strong>cloud-native infrastructures</strong>, automating deployments through CI/CD pipelines, and building systems that scale. I've worked hands-on with <strong>AWS services</strong>, containerization with Docker & Kubernetes, and Infrastructure as Code using Terraform.</p>
+      <p>Beyond cloud, I build full-stack web applications and care deeply about <strong>security</strong> — from phishing awareness to hardened cloud infrastructure.</p>
+      <p>Currently seeking <strong>internship opportunities</strong> in Cloud, DevOps, or SRE roles where I can contribute and grow fast.</p>
+    </div>
+    <div>
+      <div class="info-card">
+        <div class="info-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-val">MM University, Mullana</div>
+          <div class="info-label">BTech CSE · Cloud Specialization · 2026</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="ti ti-cloud" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-val">AWS Cloud</div>
+          <div class="info-label">EC2 · S3 · Lambda · VPC · IAM · CloudWatch</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="ti ti-git-branch" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-val">DevOps & IaC</div>
+          <div class="info-label">CI/CD · Terraform · Docker · Kubernetes</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+        <div>
+          <div class="info-val">Security Focused</div>
+          <div class="info-label">Phishing Awareness · Cloud Security · IAM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <div class="sec-label">02 · Skills</div>
+  <h2 class="sec-title">My <span>Tech Stack</span></h2>
+  <p class="sec-sub">Tools and technologies I work with</p>
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-cloud" aria-hidden="true"></i> Cloud · AWS</div>
+      <div class="skill-tags">
+        <span class="skill-tag">EC2</span>
+        <span class="skill-tag">S3</span>
+        <span class="skill-tag">Lambda</span>
+        <span class="skill-tag">VPC</span>
+        <span class="skill-tag">IAM</span>
+        <span class="skill-tag">CloudWatch</span>
+        <span class="skill-tag">Route 53</span>
+        <span class="skill-tag">CloudFront</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-container" aria-hidden="true"></i> DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Jenkins</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-topology-star" aria-hidden="true"></i> Infra as Code</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">YAML</span>
+        <span class="skill-tag">Bash Scripting</span>
+        <span class="skill-tag">CloudFormation</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-code" aria-hidden="true"></i> Development</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Firebase</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-shield" aria-hidden="true"></i> Security</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Cloud Security</span>
+        <span class="skill-tag">IAM Policies</span>
+        <span class="skill-tag">Phishing Detection</span>
+        <span class="skill-tag">VPC Security</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-hd"><i class="ti ti-brain" aria-hidden="true"></i> CS Fundamentals</div>
+      <div class="skill-tags">
+        <span class="skill-tag">DSA</span>
+        <span class="skill-tag">OS</span>
+        <span class="skill-tag">Networking</span>
+        <span class="skill-tag">DBMS</span>
+        <span class="skill-tag">OOP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-in">
+  <div class="sec-label">03 · Projects</div>
+  <h2 class="sec-title">Things I've <span>Deployed</span></h2>
+  <p class="sec-sub">Real-world cloud solutions built from scratch</p>
+  <div class="projects-grid">
+
+    <div class="proj-card featured">
+      <span class="feat-badge">Featured</span>
+      <div class="proj-top">
+        <div class="proj-icon"><i class="ti ti-user-check" aria-hidden="true"></i></div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/vansh-cloud-00" target="_blank" title="GitHub">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>
+          </a>
+          <a class="proj-link" href="#" title="Live Demo">
+            <i class="ti ti-external-link" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="proj-title">Cloud-Based Attendance System</div>
+      <div class="proj-desc">Serverless attendance management system on AWS. Real-time tracking using Lambda & DynamoDB, hosted on S3 with CloudFront CDN for zero server management and global delivery.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">AWS Lambda</span>
+        <span class="proj-tag">DynamoDB</span>
+        <span class="proj-tag">S3</span>
+        <span class="proj-tag">CloudFront</span>
+        <span class="proj-tag">Firebase</span>
+      </div>
+    </div>
+
+    <div class="proj-card featured">
+      <span class="feat-badge">Featured</span>
+      <div class="proj-top">
+        <div class="proj-icon"><i class="ti ti-shield-lock" aria-hidden="true"></i></div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/vansh-cloud-00" target="_blank" title="GitHub">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>
+          </a>
+          <a class="proj-link" href="#" title="Live Demo">
+            <i class="ti ti-external-link" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="proj-title">PhishGuard · Phishing Awareness</div>
+      <div class="proj-desc">Interactive security awareness platform that educates users to detect phishing attacks through simulated scenarios, quizzes, and real-time URL threat analysis.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">HTML/CSS/JS</span>
+        <span class="proj-tag">Firebase</span>
+        <span class="proj-tag">AWS EC2</span>
+        <span class="proj-tag">Security APIs</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon"><i class="ti ti-git-branch" aria-hidden="true"></i></div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/vansh-cloud-00" target="_blank" title="GitHub">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="proj-title">CI/CD Pipeline Automation</div>
+      <div class="proj-desc">End-to-end automated deployment pipeline with GitHub Actions. Includes build, test, Docker containerization, and auto-deploy to AWS ECS on every push to main branch.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">GitHub Actions</span>
+        <span class="proj-tag">Docker</span>
+        <span class="proj-tag">AWS ECS</span>
+        <span class="proj-tag">ECR</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon"><i class="ti ti-topology-star-3" aria-hidden="true"></i></div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/vansh-cloud-00" target="_blank" title="GitHub">
+            <i class="ti ti-brand-github" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="proj-title">Infrastructure as Code (IaC)</div>
+      <div class="proj-desc">Complete AWS infrastructure provisioned using Terraform — VPC, subnets, EC2 instances, security groups, and S3 buckets — all version-controlled and fully reproducible.</div>
+      <div class="proj-stack">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">AWS VPC</span>
+        <span class="proj-tag">EC2</span>
+        <span class="proj-tag">IAM</span>
+        <span class="proj-tag">S3</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <div class="contact-box">
+    <div class="sec-label" style="margin-bottom:0.75rem;">04 · Contact</div>
+    <div class="contact-title">Let's <span style="color:var(--accent2)">Build Together</span></div>
+    <p class="contact-sub">Open to internships in Cloud, DevOps & SRE roles. Let's connect and build something great!</p>
+    <div class="contact-links">
+      <a class="c-link primary" href="mailto:vansh.khatri855@gmail.com">
+        <i class="ti ti-mail" aria-hidden="true"></i> vansh.khatri855@gmail.com
+      </a>
+      <a class="c-link" href="https://github.com/vansh-cloud-00" target="_blank">
+        <i class="ti ti-brand-github" aria-hidden="true"></i> vansh-cloud-00
+      </a>
+      <a class="c-link" href="https://linkedin.com/in/vansh-gondi" target="_blank">
+        <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+      <a class="c-link" href="#">
+        <i class="ti ti-download" aria-hidden="true"></i> Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed & Deployed by <span>Vansh Gondi</span> · BTech CSE · Cloud Specialization · MM University 2026
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
